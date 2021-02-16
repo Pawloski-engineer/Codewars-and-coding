@@ -30,7 +30,7 @@ class LinkedList:
         self.previous = None
         while(current):
             if current.data == number: #if current number is not equal to serached number and if current Node has no following Node
-                return current, self.previous       # previous shoulkd be in other place
+                return current       # previous shoulkd be in other place
             elif current.next == None:
                 return None
             else:
@@ -44,7 +44,7 @@ class LinkedList:
         if searchedNode == None:
             print('such number was not found')
         else:
-            current = searchedNode[0]
+            current = searchedNode
             current.data = input("enter new number")
 
     def delete(self, number):
@@ -52,8 +52,8 @@ class LinkedList:
         if searchedNode == None:
             print('such number was not found')
         else:
-            current = searchedNode[0]
-            previous = searchedNode[1]
+            current = searchedNode
+            previous = self.previous
             if previous == None:
                 LL.head = current.next
             else:
