@@ -1,5 +1,7 @@
 text = "If enabled (On) and the user hovers/ clicks/ taps over the information icon (i) next to the field name, displays the help text you enter in the provided text box. Maximum length: 140 characters"
 
+# text = "If enabled (On) and the user hovers/ clicks/ taps over the information icon (i) next to the field name, displays the help text you enter in the provided text box. Maximum length: 140"
+
 def divide_to_words(text):
     words = []
     i = 0
@@ -26,10 +28,8 @@ def show_lengths(data):
 
 words = divide_to_words(text)
 
-lengths = show_lengths(words)
-
 print(words)
-print(lengths)
+
 
 # def justify(text, width):
 #     words = divide_to_words(text)
@@ -56,7 +56,7 @@ def justify(text, width):
     while i+1 < len(words):
         sum = lengths[i]
         a = i
-        while sum <= width:
+        while sum <= width and i+1<len(words):
             sum = sum + 1 + lengths[i+1]
             i += 1
         sum = sum - 1 - lengths[i]
