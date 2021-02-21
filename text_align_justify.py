@@ -47,11 +47,44 @@ print(words)
 #     return lines
 
 
+# def justify(text, width):
+#     words = divide_to_words(text)
+#     lengths = show_lengths(words)
+#     lines_lengths = []
+#     first_last_word_in_line = []
+#     sentence = ''
+#     i = 0
+#     while i+1 < len(words):
+#         sum = lengths[i]
+#         a = i
+#         while sum <= width and i+1<len(words):
+#             sum = sum + 1 + lengths[i+1]
+#             i += 1
+#         sum = sum - 1 - lengths[i]
+#         z = i
+#         az = [a,z]
+#         lines_lengths.append(sum)
+#         first_last_word_in_line.append(az)
+#     lines_lengths.append(lengths[i])
+#     first_last_word_in_line.append(z)
+#     word_numbers = []
+#     # word_numbers.append(first_last_word_in_line[0][0])
+#     i = 0
+#     while i < len(first_last_word_in_line):
+#
+#         word_numbers.append(type(first_last_word_in_line[i]))
+#         word_numbers.append('//')
+#         i += 1
+#
+#     return lines_lengths, first_last_word_in_line, word_numbers
+
+
 def justify(text, width):
     words = divide_to_words(text)
     lengths = show_lengths(words)
     lines_lengths = []
     first_last_word_in_line = []
+    sentence = ''
     i = 0
     while i+1 < len(words):
         sum = lengths[i]
@@ -61,12 +94,17 @@ def justify(text, width):
             i += 1
         sum = sum - 1 - lengths[i]
         z = i
-        az = [a,z]
+        az = range(a, z)
         lines_lengths.append(sum)
         first_last_word_in_line.append(az)
     lines_lengths.append(lengths[i])
-    first_last_word_in_line.append(z)
+    first_last_word_in_line.append([z])
+    print("type of first last words", type(first_last_word_in_line[0]))
+    for n in first_last_word_in_line:
+        for m in n:
+            print(m)
     return lines_lengths, first_last_word_in_line
+
 
 
 
@@ -76,33 +114,11 @@ solution = justify(text, 12)
 print(solution[0])
 print(solution[1])
 
-# def justify(text, width):
-#     words = divide_to_words(text)
-#     lines = []
-#     line = ''
-#     i = 0
-#     while i < len(words):
-#         line = line + words[i]
-#         if len(line) <= width:
-#             line2 = line + " " + words[i+1]
-#             if len(line2) <= width:
-#                 line = line2
-#             i += 1
-#         else:
-#             lines.append(line)
-#             line = ''
-#             i += 1
-#     return line
-
-
-# sth = justify(text, 10)
-
-
-
 
 
 #
-# words = divide_to_words(text)
+# a = 0
+# b = 5
 #
-# print(words)
-
+#
+# print(range(a, b))
