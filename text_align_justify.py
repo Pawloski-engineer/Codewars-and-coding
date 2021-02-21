@@ -102,17 +102,16 @@ def justify(text, width):
     print("type of first last words", type(first_last_word_in_line[0]))
     for n in first_last_word_in_line:
         for m in n:
-            print(m)
-    return lines_lengths, first_last_word_in_line
-
-
-
+            sentence = sentence + words[m] + ' '
+        sentence = sentence + '\n'
+    return lines_lengths, first_last_word_in_line, sentence
 
 
 solution = justify(text, 12)
 
 print(solution[0])
 print(solution[1])
+print(solution[2])
 
 
 
