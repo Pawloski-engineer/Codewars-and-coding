@@ -2,6 +2,8 @@
 
 text = "If enabled (On) and the user hovers/ clicks/ taps over the information icon (i) next to the field name, displays the help text you enter in the provided text box. Maximum length: 140"
 
+# text = "If enabled (On) and the"
+
 def divide_to_words(text):
     words = []
     i = 0
@@ -42,20 +44,33 @@ def justify(text, width):
         sum = lengths[i]
         a = i
         while sum <= width and i+1<len(words):
+            u = words[i]
             sum = sum + 1 + lengths[i+1]
             i += 1
-        sum = sum - 1 - lengths[i]
+        if sum > width:
+            sum = sum - 1 - lengths[i]
         z = i
         az = range(a, z)
         lines_lengths.append(sum)
         first_last_word_in_line.append(az)
     lines_lengths.append(lengths[i])
-    first_last_word_in_line.append([z])
-    print("type of first last words", type(first_last_word_in_line[0]))
+    if lines_lengths[-1] + len(words[z]) <= width:
+        first_last_word_in_line[-1] = range(a, z+1)
+        lines_lengths.pop()
+    else:
+        first_last_word_in_line.append([z])
+    # print("type of first last words", type(first_last_word_in_line[0]))
+    i = 0
     for n in first_last_word_in_line:
+        speces = width - lines_lengths[i]   # number of all spaces that need to be added to the line
+        # num_of_words_in_line = ??                                    # defeine number of words in the line
+
         for m in n:
-            sentence = sentence + words[m] + ' '
+            # additional_spaces = spaces/math.ceil(num_of_words_in_line-1)                                    # define number of spaces between the current words
+            # spaces = spaces - additional_spaces
+            sentence = sentence + words[m] + (1 + additional_spaces) * ' '    #multiply spaces by line (length-width)/(number_of_words - 1)
         sentence = sentence + '\n'
+        i += 1
     sentence = sentence[0: -2]
     return lines_lengths, first_last_word_in_line, sentence
 
@@ -66,11 +81,3 @@ print(solution[0])
 print(solution[1])
 print(solution[2])
 
-
-
-#
-# a = 0
-# b = 5
-#
-#
-# print(range(a, b))
