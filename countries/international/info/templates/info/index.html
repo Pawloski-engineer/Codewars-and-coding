@@ -1,0 +1,37 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<!--  <h2>GEO API</h2>-->
+<!--  <p>Your ip address is <strong>{{ ip }}</strong>, and you are probably in <strong>{{ country }}</strong> right now.</p>-->
+<div>
+    Choose the country:
+</div>
+<div>
+    <form action="/info/anthem" method="post">
+    {% csrf_token %}
+    {{ form.non_field_errors }}
+    {{ form.as_p }}
+        <label>Countries to select from:<label>
+        <select id="the_countries" onchange="myFunction()">
+            <option value="" disabled selected> Select country</option>
+            {% for country in countries %}
+            <option value="{{ country.flag }}">{{ country.name }}</option>
+            {% endfor %}
+        </select>
+        <input class="SubmitButton" type="submit" name="SUBMITBUTTON" value="Submit" style="font-size:20px; "/>
+    </form>
+</div>
+        <!--        {{countries}}-->
+<div>
+    <img id="demo" width="200"></img>
+    <script>
+        function myFunction() {
+          var x = document.getElementById("the_countries").value;
+          document.getElementById("demo").src = x;
+        }
+    </script>
+
+</div>
+
+
+{% endblock %}
